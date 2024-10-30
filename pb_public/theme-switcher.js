@@ -8,16 +8,12 @@
 const themeSwitcher = {
   // Config
   _scheme: "light",
-  menuTarget: "details.dropdown",
-  buttonsTarget: "a[data-theme-switcher]",
-  buttonAttribute: "data-theme-switcher",
   rootAttribute: "data-theme",
   localStorageKey: "picoPreferredColorScheme",
 
   // Init
   init() {
     this.scheme = this.schemeFromLocalStorage;
-    this.initSwitchers();
   },
 
   // Get color scheme from local storage
@@ -28,24 +24,6 @@ const themeSwitcher = {
   // Preferred color scheme
   get preferredColorScheme() {
     return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-  },
-
-  // Init switchers
-  initSwitchers() {
-    const buttons = document.querySelectorAll(this.buttonsTarget);
-    buttons.forEach((button) => {
-      button.addEventListener(
-        "click",
-        (event) => {
-          event.preventDefault();
-          // Set scheme
-          this.scheme = button.getAttribute(this.buttonAttribute);
-          // Close dropdown
-          document.querySelector(this.menuTarget)?.removeAttribute("open");
-        },
-        false
-      );
-    });
   },
 
   // Set scheme
