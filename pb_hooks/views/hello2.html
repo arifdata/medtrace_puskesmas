@@ -1,0 +1,8 @@
+{{define "title"}}
+    Page 1
+{{end}}
+
+{{define "body"}}
+    <p>Hello 2 from {{.name}}</p>
+    <h1 x-data="{ message: 'I ❤️ Alpine' }" x-text="message"></h1>
+{{end}}

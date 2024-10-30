@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <script defer src="/alpine.min.js"></script>
+    <link rel="stylesheet" href="/pico.min.css">
+    <link rel="stylesheet" href="/pico.colors.min.css">
+    <title>{{block "title" .}}MedTrace Puskesmas Edition{{end}}</title>
+</head>
+<body>
+	<header class="container" x-data="{ theme: window.localStorage?.getItem('picoPreferredColorScheme') ?? 'light' }">
+		<nav>
+		  <ul>
+			<li><strong>MedTrace PKM</strong></li>
+			<li><a style="text-decoration:none" href="/">Home</a></li>
+			<template x-if="theme == 'light'">
+				<li><button class="pico-background-slate-500" @click="theme = 'dark'" onclick="
+				themeSwitcher.scheme = 'dark';
+				window.localStorage?.setItem('picoPreferredColorScheme', 'dark');
+				"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAABgUlEQVRIS2NkoDFgpLH5DIQsEAM6IBGIXYDYlRzH4LKAHWhYExAXAzEzEK8A4khqWcANNGgLEDsgGZgHZE+mhgVMQEN2QoME2bxCIGcCNSyoBhrSgsUgkHgbpRaIAA24D8Q8WAyaCxRLodQCUDhPxGHIZ6C4MBD/JtUS5FS0FajZC48BQUC59ZRY8ByoWQKPAc+AcoZA/IoUS2A+AKWeP0BMKOMdAaoBZbgfxFqCbOBPoCY2IjQeB6rxBOKPRKhFcfEDoAZ5YjRBg6kDSC8G4jdY9MgCxR6DxJF9sAjIjyXSAmRlp4Gca0AMikMVIDYG4t1AnI5ugTdQAFREUAOA4mkPugUg/jkgBqUUSsBJoGYLmAHoqcYKKHEIiEElKDngFzSIruCyACReAsTd5JgO1JMPxJOQ9eJK9yBLQKmEWJ/8BaotB+JedIfhy1g2QMUzgViLgG8uAeUzgfgYNnWEci4oh/sCMaiMUkczAJQ0twExqAz7j8sRhCwgMyoQ2mhuAQCaCDYZMGv/VwAAAABJRU5ErkJggg=="/></button></li>
+				<li>
+			</template>
+			<template x-if="theme == 'dark'">
+				<li><button class="pico-background-slate-50" @click="theme = 'light'" onclick="
+				themeSwitcher.scheme = 'light';
+				window.localStorage?.setItem('picoPreferredColorScheme', 'light');
+				"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAABvUlEQVRIS9WVyytFURSH7yUZGCFKKYmMjWWCgcwMlD+AIilFkVfIu8QEA4+5gVJGUh4TY2NhJIqIDAyUx/erfW7Hds7Z597cgV1f+5691l6//Vh73WQiyy2Z5fiJdATk+2kWFHtebEcC/6nAOAHX4ck6wi+zi1xrvJjvbpi1jzxoB6M4zcAlNMCt457KsZ9ANQzDgt8/SKAChyOoggFYdggMYl+EK2iEG5eA7KXQCXPGuY2+x+xIQ8ewCnvGPkK/BQ/2YuJc8pLZSdBGphicjNqhS6CdyTsmwDS9Ll6tF3RXas1wGCbiEjhnYi30w4oVxEsGBZdIYPME/DkuR2/8g985UAgvVoQyvu/gGYrMHO8hpmK4BN7xzAsRUCLcwxsUuATCdniGoQ66YMNyUlatwSnovUQeUZi9FYNS8RX0iHYhHzQ+b1beQn+QqYDmRaXpGPZf5cEvFpZFOt8Os0r566H1Qb2ZvE+/DerVlFGbEOuhqVSotlRCnFIxhJ/qzzXoLpylwsvvC5ybIE6xU+2qAZUM3U2qhR3RBB7KkEe/M7/DynUJNmWaqvCP5nrJ9mL+zz+avdOMv9M5ooxEvgHJ808ZE09dIgAAAABJRU5ErkJggg=="/></button></li>
+				<li>
+			</template>
+		  </ul>
+			
+		  <ul>
+			<li><a href="/yellow">About</a></li>
+			<li><a href="#">Products</a></li>
+		  </ul>
+		</nav>
+	</header>
+
+	<div class="container">
+		Template Testing...
+
+		{{block "body" .}}
+			Default app body...
+		{{end}}
+
+		End Template Test...
+    </div>	
+    <script src="/theme-switcher.js"></script>
+</body>
+</html>
