@@ -1,8 +1,8 @@
 // pb_hooks/main.pb.js
+//routerAdd("GET", "/*", $apis.static($os.dirFS("./pb_public"), false))
 
-
-routerAdd("get", "/", (c) => {
-    const name = c.pathParam("name")
+routerAdd("GET", "/{$}", (e) => {
+    let name = e.request.pathValue("name")
 
     const html = $template.loadFiles(
         `${__hooks}/views/layout.html`,
@@ -11,22 +11,13 @@ routerAdd("get", "/", (c) => {
         "name": name,
     })
 
-    return c.html(200, html)
+    return e.html(200, html)
 })
 
-routerAdd("get", "/yellow", (c) => {
-    const name = c.pathParam("name")
+routerAdd("GET", "/hello/{name}", (e) => {
+    let name = e.request.pathValue("name")
 
-    const html = $template.loadFiles(
-        `${__hooks}/views/layout.html`,
-        `${__hooks}/views/hello2.html`,
-    ).render({
-        "name": name,
-    })
-
-    return c.html(200, html)
+    return e.json(200, { "message": "Hello " + name })
 })
 
-onModelAfterUpdate((e) => {
-    console.log("user updated...", e.model.get("email"))
-}, "users")
+routerAdd("GET", "/{path...}", $apis.static(`${__hooks}/../pb_public`, false))

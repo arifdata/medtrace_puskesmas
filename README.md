@@ -1,1 +1,0 @@
-# ⚕️💊 MedTrace Puskesmas Edition
